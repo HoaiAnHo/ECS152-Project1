@@ -7,8 +7,11 @@ from dpkt.compat import compat_ord
 
 # Opening a PCAP file
 def observer():
-    with open('project1_part2.pcap', 'rb') as f:
+    # with open('project1_part2.pcap', 'rb') as f:
+    with open('peertube.pcap', 'rb') as f:
         pcap = dpkt.pcap.Reader(f)
+        for ts, buf in pcap:
+            print(ts)
     return pcap
 
 # count number of devices connected to hotspot
@@ -50,4 +53,4 @@ def disconnect_check():
 
 if __name__ == '__main__':
     pcap = observer()
-    device_count(pcap)
+    # device_count(pcap)
